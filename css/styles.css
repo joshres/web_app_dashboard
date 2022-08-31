@@ -135,12 +135,15 @@ header {
     font-weight: 200;
 }
 
+.traffic, .daily, .mobile, .social-stats, .members, .activity, .message, .settings {
+    border-bottom: 2px solid rgb(209, 209, 209);
+    padding: 20px;
+}
+
 /********* traffic nav **********/
 
 .traffic-header h3 {
-    font-weight: 100;
-    margin: 10px 20px;
-    padding: 10px 0;
+    padding-bottom: 20px;
 }
 
 .traffic-nav {
@@ -149,6 +152,41 @@ header {
     padding: 0;
     list-style: none;
 }
+
+/**********************
+    Social Stats
+ ********************/
+
+ .social-stats h3 {
+    padding-bottom: 20px;
+ }
+
+ .social-container {
+    display: flex;
+    place-items: center;
+    background-color: rgb(226, 226, 226);
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 10px;
+ }
+
+ .social-container svg {
+    width: 55px;
+ }
+
+ .social-container-all {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ }
+
+ .social-text p {
+    padding-left: 15px;
+ }
+
+ .social-text p:last-child {
+    font-size: 175%;
+ }
 
 /**********************
     Mdia Queries
