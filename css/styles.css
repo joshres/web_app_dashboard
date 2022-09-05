@@ -41,7 +41,7 @@ main {
 header {
     background-color: rgb(141, 140, 210);
     display: grid;
-    grid-template-columns: 1fr 40px 10px 65px 90px;
+    grid-template-columns: 1fr 40px 10px 65px 70px;
     grid-template-rows: 70px;
     justify-content: space-between;
     align-items: center;
@@ -89,6 +89,7 @@ header {
 
 .nav-item-wrap {
     width: 15%;
+    cursor: pointer;
 }
 
 .navigation svg {
@@ -140,7 +141,9 @@ header {
     padding: 20px;
 }
 
-/********* traffic nav **********/
+/**********************
+    Traffic Nav
+ **********************/
 
 .traffic-header h3 {
     padding-bottom: 20px;
@@ -155,7 +158,7 @@ header {
 
 /**********************
     Social Stats
- ********************/
+ **********************/
 
  .social-stats h3 {
     padding-bottom: 20px;
@@ -164,9 +167,9 @@ header {
  .social-container {
     display: flex;
     place-items: center;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(246, 246, 246);
     border: 1px solid rgb(209, 209, 209);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
  }
 
@@ -188,9 +191,88 @@ header {
     font-size: 175%;
  }
 
+ /************************************
+    New Members / Recent Activity
+ **************************************/
+
+ .members h3 {
+    padding-bottom: 20px;
+ }
+
+ .members-container-all, .activity-container-all {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+ }
+
+ .members-container, .activity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid rgb(209, 209, 209);
+    padding-bottom: 20px;
+ }
+
+ /**********************
+    Message User
+ **********************/
+
+ .message h3 {
+    padding-bottom: 20px;
+ }
+
+ .message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+ }
+
+ .form-field, .form-area {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1.5px solid rgb(209, 209, 209);
+    background-color: rgb(246, 246, 246);
+    overflow: auto;
+ }
+
+ .form-area {
+    height: 155px;
+ }
+
+ .button-primary {
+    padding: 10px;
+    background-color: rgb(141, 140, 210);
+    color: white;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+ }
+  /**********************
+    Settings
+ **********************/
+.settings h3 {
+    padding-bottom: 20px;
+}
+ .settings-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ }
+
+ .settings-choices label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ }
+
+ .on-off {
+    width: 25%;
+ }
+    
+
 /**********************
     Mdia Queries
- ********************/
+ **********************/
 
  @media (min-width: 768px) {
     .grid-container {
