@@ -84,7 +84,7 @@ header {
     place-content: center;
     place-items: center;
     background-color:rgb(71, 70, 131);
-    padding: 15px;
+    padding: 15px 0;
 }
 
 .nav-item-wrap {
@@ -164,9 +164,14 @@ header {
     padding-bottom: 20px;
  }
 
- .social-container {
+ .social-container-all {
     display: flex;
-    place-items: center;
+    flex-direction: column;
+    gap: 20px;
+ }
+ .social-container{
+    display: flex;
+    align-items: center;
     background-color: rgb(246, 246, 246);
     border: 1px solid rgb(209, 209, 209);
     border-radius: 5px;
@@ -177,19 +182,29 @@ header {
     width: 55px;
  }
 
- .social-container-all {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
- }
-
  .social-text p {
     padding-left: 15px;
  }
 
+ .social-text p:first-child {
+    color: rgb(141, 140, 210);
+ }
+
  .social-text p:last-child {
     font-size: 175%;
+    color: rgb(121, 121, 121);
  }
+
+ /***** SVG Styling *****/
+
+ /* .svg-image {
+    fill: white;
+ } */
+
+ .circle {
+    fill:rgb(141, 140, 210);
+ }
+
 
  /************************************
     New Members / Recent Activity
@@ -260,13 +275,19 @@ header {
  }
 
  .settings-choices label {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 215px 100px;
     align-items: center;
  }
 
- .on-off {
-    width: 25%;
+ .settings-button {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+ }
+
+ #save, #cancel {
+    width: 50%;
  }
     
 
@@ -302,8 +323,29 @@ header {
         width: 90vw;
     }
 
-
-    .widget-container-half {
+     .widget-container-half {
         width: 45vw;
+    }
+
+    .navigation {
+        flex-direction: column;
+        place-content: flex-start;
+        row-gap: 20px;
+        height: 100%;
+    }
+
+    .navigation svg {
+        width: 40px;
+    }
+
+    .nav-item-wrap {
+        width: 43px;
+    }
+
+    .traffic-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
  }
