@@ -3,7 +3,6 @@
     box-sizing: border-box;
     margin: 0;
 }
-
 /******************* 
     Grid layout
 ********************/
@@ -43,7 +42,6 @@ header {
     display: grid;
     grid-template-columns: 1fr 40px 10px 65px 70px;
     grid-template-rows: 70px;
-    justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
@@ -169,13 +167,14 @@ header {
     flex-direction: column;
     gap: 20px;
  }
- .social-container{
+ .social-container {
     display: flex;
     align-items: center;
     background-color: rgb(246, 246, 246);
     border: 1px solid rgb(209, 209, 209);
     border-radius: 5px;
     padding: 10px;
+    width: 100%;
  }
 
  .social-container svg {
@@ -227,6 +226,10 @@ header {
     text-align: center;
     border-bottom: 2px solid rgb(209, 209, 209);
     padding-bottom: 20px;
+ }
+
+ .activity-button {
+    display: none;
  }
 
  /**********************
@@ -295,36 +298,12 @@ header {
     Mdia Queries
  **********************/
 
- @media (min-width: 768px) {
+ @media screen and (min-width: 768px) {
     .grid-container {
-        grid-template-columns: 55px 1fr;
+        grid-template-columns: 80px 1fr;
         grid-template-areas: 
         "header header"
         "navigation main";
-    }
-
-    main {
-        grid-template-columns: 50%;
-    }
-
-    .traffic, .social {
-        grid-column: 1 / span 2;
-    }
-
-    .daily, .members, .message {
-        grid-column: 1 / span 1;
-    }
-
-    .mobile, .activity, .settings {
-        grid-column: 2 / span 1;
-    }
-
-    .widget-conatiner-full {
-        width: 90vw;
-    }
-
-     .widget-container-half {
-        width: 45vw;
     }
 
     .navigation {
@@ -342,10 +321,64 @@ header {
         width: 43px;
     }
 
+     main {
+        display: grid;
+        grid-template-columns: 50%;
+    }
+
+    .traffic,
+    .social-stats,
+    .alert,
+    .members,
+    .activity,
+    .message,
+    .settings {
+        grid-column: 1 / span 2;
+    }
+
+    .daily {
+        grid-column: 1 / span 1;
+        border-right: 2px solid rgb(209, 209, 209);
+    }
+
+    .mobile {
+        grid-column: 2 / span 1;
+    }
+
+    .widget-conatiner-full {
+        width: 90vw;
+    }
+
+     .widget-container-half {
+        width: 45vw;
+    }
+
+    .social-container-all {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .traffic-header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .members-container, .activity-container {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .members-text, .activity-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center;
+        margin-right: auto;
+    }
+
+    .activity-button {
+        display: inherit;
     }
  }
