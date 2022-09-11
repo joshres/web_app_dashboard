@@ -209,7 +209,7 @@ header {
     New Members / Recent Activity
  **************************************/
 
- .members h3 {
+ .members h3, .activity h3 {
     padding-bottom: 20px;
  }
 
@@ -326,6 +326,10 @@ header {
         grid-template-columns: 50%;
     }
 
+    .main-header {
+        grid-column: 1 / span 2;
+    }
+
     .traffic,
     .social-stats,
     .alert,
@@ -381,4 +385,30 @@ header {
     .activity-button {
         display: inherit;
     }
+    
+    .arrow {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+ }
+
+ @media screen and (min-width: 1024px) {
+    .members, .message {
+        grid-column: 1 / span 1;
+    }
+
+    .activity, .settings {
+        grid-column: 2 / span 1;
+    }
+
+    .members, .message {
+        border-right: 2px solid rgb(209, 209, 209);
+    }
+
+    .settings-choices {
+        gap: 40px;
+    }
+
+
  }
