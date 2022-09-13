@@ -40,7 +40,7 @@ main {
 header {
     background-color: rgb(141, 140, 210);
     display: grid;
-    grid-template-columns: 1fr 40px 10px 65px 70px;
+    grid-template-columns: 1fr 50px 10px 65px 70px;
     grid-template-rows: 70px;
     align-items: center;
     padding: 10px;
@@ -115,6 +115,38 @@ header {
     border-left: 1px solid rgb(219, 219, 219);;
 }
 
+.bell-icon-dot {
+    background: rgb(58, 246, 48);
+    position: absolute;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+}
+
+.bell-icon {
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+}
+
+.bell-icon {
+    animation: nudge-bell 1s infinite;
+}
+
+ @keyframes nudge-bell {
+    15% {
+        transform: rotate(-45deg);
+    }
+
+    30% {
+        transform: rotate(45deg);
+    }
+
+    60% {
+        transform: rotate(-45deg)
+    }
+ }
+
 .alert-banner {
     display: flex;
     justify-content: space-between;
@@ -132,6 +164,16 @@ header {
 .alert-banner p {
     color: #fff;
     font-weight: 200;
+}
+
+.dropdown {
+    position: absolute;
+    left: 0;
+    top: calc(100% + .30rem);
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgb(173, 171, 255);
 }
 
 .traffic, .daily, .mobile, .social-stats, .members, .activity, .message, .settings {
