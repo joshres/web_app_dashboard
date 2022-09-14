@@ -147,6 +147,11 @@ header {
     }
  }
 
+ .alert {
+    position: relative;
+    display: inline-block;
+ }
+
 .alert-banner {
     display: flex;
     justify-content: space-between;
@@ -166,7 +171,19 @@ header {
     font-weight: 200;
 }
 
+.drop-menu {
+    border: none;
+    color: white;
+    background-color: rgb(141, 140, 210);
+    cursor: pointer;
+}
+
+.drop-menu:hover {
+    color: rgb(79, 249, 87);
+}
+
 .dropdown {
+    display: none;
     position: absolute;
     left: 0;
     top: calc(100% + .30rem);
@@ -174,7 +191,26 @@ header {
     padding: 10px;
     border-radius: 15px;
     background-color: rgb(173, 171, 255);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
 }
+
+.dropdown-list li {
+    list-style: none;
+    padding: 10px 0 10px 0;
+}
+
+.dropdown-list a:hover {
+    color:rgb(82, 82, 82);
+}
+
+.dropdown-item {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.show {display:block}
 
 .traffic, .daily, .mobile, .social-stats, .members, .activity, .message, .settings {
     border-bottom: 2px solid rgb(209, 209, 209);

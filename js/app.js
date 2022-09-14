@@ -3,9 +3,9 @@ const alertBanner = document.getElementById("alert");
 alertBanner.innerHTML = 
     `
      <div class="alert-banner">
-        <div><p><strong>Alert:</strong> You have <strong>2</strong> unread messages</p></div>
+        <button onclick="dropMenu()" class="drop-menu"><strong>Alert:</strong> You have <strong>2</strong> unread messages</button>
         <div><p class="alert-banner-close">x</p></div>
-        <div class="dropdown">
+        <div id="dropdown" class="dropdown">
             <ul class="dropdown-list">
                 <li><a class="dropdown-item" href='#'>Introduction to WebApp</a></li>
                 <li><a class="dropdown-item" href='#'>New Member Information</a></li>
@@ -14,12 +14,34 @@ alertBanner.innerHTML =
     </div>
     `
 
+////
+///////////////////// Alert Banner /////////////////////
+////
+
 alertBanner.addEventListener('click', e => {
     const element = e.target;
     if (element.classList.contains("alert-banner-close")) {
         alertBanner.style.display = "none";
     }
 });
+
+// toggle between hiding and showing the list when the user clicks on button
+function dropMenu() {
+    document.getElementById("dropdown").classList.toggle("show");
+};
+
+// close the dropdown menu if the user clicks oustide of it
+window.onclick = function(event) {
+    if (!event.target.matches('.drop-menu')) {
+        let dropdowns = document.getElementsByClassName("dropdown");
+        for (i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+};
 
 ////
 ///////////////////// Traffic Chart /////////////////////
