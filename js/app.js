@@ -47,12 +47,20 @@ window.onclick = function(event) {
 ///////////////////// Traffic Chart /////////////////////
 ////
 
-const trafficCanvas = document.getElementById('traffic-chart').getContext('2d');
+const trafficCanvas = document.getElementById("traffic-chart").getContext('2d');
+const labels = document.querySelectorAll('.traffic-nav label')
+
+const chartArray = [
+    [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+    [880, 1760, 566, 1430, 1200, 1554, 1380, 1800, 1300, 1600, 2700],
+    [1200, 1900, 300, 700, 1100, 1280, 1150, 900, 1200, 1700, 2900],
+    [1300, 2100, 230, 600, 2100, 1700, 1665, 1100, 950, 100, 3100]
+]
 
 let trafficData = {
     labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
     datasets : [{
-        data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+        data: chartArray[0],
         backgroundColor: 'rgba(116, 119, 191, .3)',
         borderWidth: 1,
     }]
@@ -77,17 +85,27 @@ let trafficOptions = {
     }
 };
 
+for (let i = 0; i < labels.length; i++) {
+    labels[i].addEventListener('click', () => {
+        if (labels[i] === labels[i]) {
+            trafficChart.data.datasets[0].data = chartArray[i];
+        }
+        trafficChart.update()
+    })
+}
+
+
 let trafficChart = new Chart(trafficCanvas, {
     type: 'line',
-    data: trafficData,
-    options: trafficOptions,
+    data: trafficData, 
+    options: trafficOptions
 });
 
 ////
 ///////////////////// Daily Chart /////////////////////
 ////
 
-const dailyCanvas = document.getElementById('daily-chart');
+const dailyCanvas = document.getElementById("daily-chart");
 
 const dailyData = {
     labels: ["S", "M", "T", "W", "T", "F", "S"],
@@ -158,6 +176,67 @@ let mobileChart = new Chart(mobileCanvas, {
 });
 
 ////
+///////////////////// Autocomplete Search User /////////////////////
+////
+
+let userNames = [
+    "Victoria Chambers",
+    "Dale Byrd",
+    "Dawn Wood",
+    "Dan Oliver"
+];
+
+const input = document.querySelector('.form-field');
+const list = document.createElement('ul');
+
+input.addEventListener('keyup', (e) => {
+    document.body.onkeyup = function(e) {
+        if (e.key == " "  || e.key == 32 || e.code == "Space") {
+            list.remove() 
+            }
+        }
+    list.classList.add('list')
+    insertAfter(list, input)
+    removeElements()
+    for (let i of userNames) {
+        if (i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != ' ') {
+            let listItem = document.createElement("li");
+            listItem.classList.add("list-item");
+            listItem.style.cursor = "pointer";   
+            listItem.style.padding = '20px 15px 10px 0px';
+            listItem.style.listStyle = 'none';
+            listItem.setAttribute("onclick", "displayNames('" + i + "')");
+        
+            let word = "<b>" + i.substring(0, input.value.length) + "</b>";
+            word += i.substring(input.value.length);
+        
+            listItem.innerHTML = word;
+            list.appendChild(listItem);
+
+            if (input.value.length == 0 || input.value == ' '  ) {
+                list.remove()
+            }
+        }
+    }
+});
+
+const insertAfter = (newNode, existingNode) => {
+    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
+
+const displayNames = (value) => {
+    input.value = value;
+    removeElements();
+}
+
+const removeElements = () => {
+    let items = document.querySelectorAll(".list-item");
+    items.forEach((item) => {
+        item.remove();
+    });
+}
+
+////
 ///////////////////// Message User /////////////////////
 ////
 
@@ -178,3 +257,54 @@ send.addEventListener('click', () => {
         alert(`Message successfully sent to: ${user.value}`)
     }
 });
+
+////
+///////////////////// Save / Cancel In Local Storage /////////////////////
+////
+
+const email = document.querySelector(".email-toggle");
+const public = document.querySelector(".public-toggle");
+const timezone = document.getElementById("timezone");
+const save = document.getElementById("save");
+const cancel = document.getElementById("cancel");
+
+save.addEventListener('click', () => {
+    localStorage.setItem('email', email.checked);
+    localStorage.setItem('public', public.checked);
+    localStorage.setItem('timezone', timezone.value);
+});
+
+let emailStorage = localStorage.getItem(email);
+let publicStorage = localStorage.getItem(public);
+let timezoneStorage = localStorage.getItem(timezone);
+
+cancel.addEventListener('click', () => {
+    localStorage.removeItem('email', email.checked);
+    localStorage.removeItem('public', public.checked);
+    localStorage.removeItem('timezone', timezone.value);
+    email.checked = false;
+    public.checked = false;
+    timezone.value = "Select a Timezone";
+    localStorage.clear();
+});
+
+const storedItems = () => {
+    if (localStorage.email === "true") {
+        email.checked = true;
+    } else {
+        email.checked = false;
+    }
+
+    if (localStorage.public === "true") {
+        public.checked = true;
+    } else {
+        public.checked = false;
+    }
+
+    if (localStorage.timezone) {
+        timezone.value = localStorage.timezone;
+    }
+};
+
+storedItems();
+

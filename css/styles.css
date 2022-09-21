@@ -148,6 +148,7 @@ header {
  }
 
  .alert {
+    width: 100%;
     position: relative;
     display: inline-block;
  }
@@ -325,11 +326,16 @@ header {
  }
 
  .form-field, .form-area {
+    width: 100%;
     padding: 12px;
     border-radius: 5px;
     border: 1.5px solid rgb(209, 209, 209);
     background-color: rgb(246, 246, 246);
     overflow: auto;
+ }
+
+ .list-item:hover {
+    color: rgb(143, 143, 143);
  }
 
  .form-area {
@@ -343,9 +349,11 @@ header {
     border: 1px solid rgb(209, 209, 209);
     border-radius: 5px;
  }
+
   /**********************
     Settings
  **********************/
+
 .settings h3 {
     padding-bottom: 20px;
 }
@@ -370,7 +378,14 @@ header {
  #save, #cancel {
     width: 50%;
  }
-    
+
+ #save:hover, #cancel:hover {
+    cursor: pointer;
+ }
+
+ #save:hover {
+    background-color: rgb(170, 169, 251);
+ }
 
 /**********************
     Mdia Queries
