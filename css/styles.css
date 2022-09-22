@@ -273,16 +273,23 @@ header {
     color: rgb(121, 121, 121);
  }
 
- /***** SVG Styling *****/
+.social-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
- /* .svg-image {
-    fill: white;
- } */
-
- .circle {
-    fill:rgb(141, 140, 210);
+ .instagram, .facebook, .twitter {
+    border-radius: 100%;
+    overflow: visible;
+    background-color: rgb(141, 140, 210);
  }
 
+ /***** SVG Styling *****/
+
+ .svg-image {
+    fill: white;
+ }
 
  /************************************
     New Members / Recent Activity
